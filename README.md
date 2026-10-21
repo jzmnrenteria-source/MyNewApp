@@ -8,7 +8,8 @@ Plain HTML and CSS, so there's no build step.
 
 - `index.html`: the landing page
 - `thanks.html`: the page people see after joining the waitlist
-- `styles.css`: design tokens (Barlow / Barlow Condensed, steel-blue accent) and the page styles
+- `styles.css`: design tokens (Barlow / Barlow Condensed, steel-blue accent), light and dark themes, and the page styles
+- `theme.js`: the Light / System / Dark switch in the top bar (the choice is remembered in the browser)
 - `netlify.toml`: Netlify settings (serves the repo root, adds security headers)
 
 ## Deploy to Netlify
