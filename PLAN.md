@@ -15,7 +15,7 @@ Each phase ends with a quality check. The next phase starts only after the check
 
 ✅ Check: try all three on desktop and phone, reload after each, switch the device to dark mode while on System.
 
-## Phase 1: Make the landing page launch-ready (built, waiting for the check)
+## Phase 1: Make the landing page launch-ready ✔ done
 
 - Done: honest figures, and the sample gyms are labelled "Example" (real gyms arrive with the Phase 2 data)
 - Done: social share image and tags, sitemap, robots.txt, 404 page
@@ -25,14 +25,16 @@ Each phase ends with a quality check. The next phase starts only after the check
 
 ✅ Check: a waitlist signup arrives in Netlify Forms, Lighthouse 90+, both themes look right on a real phone.
 
-## Phase 2: The working quiz with ranked matches (Vite + Vue)
+## Phase 2: The working quiz with ranked matches (Vite + Vue) (built, waiting for the check)
 
 - Four-question quiz: goal, budget, when you train, what matters most
-- Ranked results with match % and the reasons behind it, using ~20 real Miami gyms
+- Ranked results with match % and the reasons behind it, using 20 real Miami gyms from public listings
+  (prices are estimated levels, no ratings or hours yet; confirm with the gyms before launch)
+- "Distances from" picker for 7 neighborhoods
 - Results shareable as a link
 - Netlify switches to a build step (`npm run build`, publish `dist`)
 
-✅ Check: rankings make sense for 5 to 6 test answer sets, smooth on a phone.
+✅ Check: rankings make sense for 5 to 6 test answer sets, smooth on a phone. Review the gym list in `src/quiz/data.js`.
 
 ## Phase 3: Explore, gym profiles, compare and saved (Leaflet)
 
