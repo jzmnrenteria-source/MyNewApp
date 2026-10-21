@@ -3,5 +3,7 @@ Allow: /
 Disallow: /thanks.html
 Disallow: /saved/
 Disallow: /compare/
+Disallow: /account/
+Disallow: /admin/
 
 Sitemap: https://fitq2026.netlify.app/sitemap.xml

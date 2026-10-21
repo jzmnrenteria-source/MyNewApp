@@ -36,7 +36,7 @@ Each phase ends with a quality check. The next phase starts only after the check
 
 ✅ Check: rankings make sense for 5 to 6 test answer sets, smooth on a phone. Review the gym list in `src/shared/data.js`.
 
-## Phase 3: Explore, gym profiles, compare and saved (Leaflet) (built, waiting for the check)
+## Phase 3: Explore, gym profiles, compare and saved (Leaflet) ✔ done
 
 - Map with filters for price, distance, training style and amenities; map tiles darken in dark mode
 - One marker per neighborhood with a gym count (exact pins once addresses are confirmed)
@@ -49,11 +49,20 @@ Each phase ends with a quality check. The next phase starts only after the check
 
 ✅ Check: quiz → explore → profile → compare → saved works end to end; filters and the shortlist behave.
 
-## Phase 4: Accounts, live data and the gym-owner side
+## Phase 4: Accounts, live data and the gym-owner side (built, waiting for the check)
 
-- Gym data in Supabase
-- Sign-in so a shortlist follows people across devices
-- Gym listing form with leads delivered to the gym
-- Simple admin page for keeping listings current
+- Gym data in Supabase (falls back to the built-in list if the database is unreachable)
+- Email-link sign-in; saved gyms and notes sync to the account
+- Gym pages: contact form (day pass or question), owner-provided details, Verified badge
+- Owner dashboard: claim or add a gym, edit details, read messages
+- Admin page: approve owner requests, edit or add gyms
+- Database access rules (row level security) on every table
+
+Decisions: restore the existing Supabase project; email-link sign-in; leads go to an owner dashboard (no email yet); admin is the site owner's account.
+
+Still open:
+- Security checks: signed-out visitors passed (6/6); signed-in, owner and admin checks still to run
+- Test data left in the database by the security setup (4 rls-test accounts, a hidden test gym, CrossFit Wynwood's test owner) to clean up
+- Supabase dashboard: set the Site URL and redirect URLs; connect your own email sender before launch
 
 ✅ Check: security review (one user can't see another's data), full test from sign-up to a gym receiving a lead, Netlify error logs clean.

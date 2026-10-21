@@ -13,6 +13,8 @@ const status = ref('idle') // idle | sending | sent | error
 const error = ref('')
 
 watch(() => auth.user?.email, (e) => { if (e && !email.value) email.value = e }, { immediate: true })
+// The page first renders with the built-in gym list; follow the live details when they arrive.
+watch(() => props.gym.offersDayPass, (offers) => { kind.value = offers ? 'day_pass' : 'question' })
 
 const canSend = computed(() => name.value.trim() && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value) && status.value !== 'sending')
 

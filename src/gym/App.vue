@@ -131,7 +131,7 @@ watchEffect(() => {
           <h2 id="todo-title" class="section-title">Still to come</h2>
           <p>
             We only publish details we can confirm, so {{ gym.name }}’s {{ missing.join(', ') }}
-            {{ missing.length === 1 ? 'isn’t' : 'aren’t' }} listed yet. Check with the gym directly for now.
+            aren’t listed yet. Check with the gym directly for now.
           </p>
           <p v-if="PHASE4_LIVE && !gym.ownerId">Own or manage this gym? <a href="/owner/">Claim this listing</a> to add your details.</p>
           <a v-if="gym.source" :href="gym.source" target="_blank" rel="noopener">Where this listing comes from</a>

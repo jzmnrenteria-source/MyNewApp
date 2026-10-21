@@ -1,3 +1,3 @@
-// Switch for Phase 4 features that aren't finished yet (gym contact form and
-// "Claim this listing"). Set to true once sign-in and the owner dashboard are live.
-export const PHASE4_LIVE = false
+// Switch for the Phase 4 features on gym pages (contact form and "Claim this listing").
+// Set to false to hide them again, e.g. if sign-in has to be taken offline.
+export const PHASE4_LIVE = true

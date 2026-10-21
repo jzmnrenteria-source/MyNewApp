@@ -4,6 +4,8 @@ import { gyms } from '../shared/gyms.js'
 import { MAX_COMPARE, setNote, state, toggleSaved } from '../shared/store.js'
 import { areaLabel, gymUrl, priceLabel } from '../shared/format.js'
 import GymActions from '../shared/GymActions.vue'
+import { auth, signInUrl } from '../shared/auth.js'
+import { supabase } from '../shared/supabase.js'
 
 const items = computed(() =>
   state.saved.map((s) => ({ ...s, gym: gyms.value.find((g) => g.id === s.id) })).filter((s) => s.gym),
@@ -19,7 +21,12 @@ function compareAll() {
   <header class="saved-head">
     <div>
       <h1 class="page-title">Saved gyms</h1>
-      <p class="muted">Your shortlist. Add notes after a visit or a trial pass. Saved in this browser only.</p>
+      <p class="muted">
+        Your shortlist. Add notes after a visit or a trial pass.
+        <template v-if="auth.user">Synced to your account.</template>
+        <template v-else-if="supabase">Saved in this browser only. <a :href="signInUrl()">Sign in</a> to keep it on every device.</template>
+        <template v-else>Saved in this browser only.</template>
+      </p>
     </div>
     <button v-if="items.length >= 2" type="button" class="btn btn-primary" @click="compareAll">
       Compare {{ items.length > MAX_COMPARE ? `first ${MAX_COMPARE}` : 'all' }} saved
