@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { GYMS } from '../shared/data.js'
+import { gyms as allGyms, loadGyms } from '../shared/gyms.js'
 import { MAX_COMPARE, state, toggleCompare } from '../shared/store.js'
 import { compareRows, bestIndexes } from '../shared/compare.js'
 import { areaLabel, gymUrl } from '../shared/format.js'
@@ -8,13 +8,15 @@ import { areaLabel, gymUrl } from '../shared/format.js'
 // A shared link (?ids=a,b,c) replaces this browser's compare list.
 const shared = new URLSearchParams(window.location.search).get('ids')
 if (shared) {
-  const ids = shared.split(',').filter((id) => GYMS.some((g) => g.id === id)).slice(0, MAX_COMPARE)
-  if (ids.length) state.compare.splice(0, state.compare.length, ...ids)
   window.history.replaceState(null, '', window.location.pathname)
+  loadGyms().then((list) => {
+    const ids = shared.split(',').filter((id) => list.some((g) => g.id === id)).slice(0, MAX_COMPARE)
+    if (ids.length) state.compare.splice(0, state.compare.length, ...ids)
+  })
 }
 
 const near = computed(() => state.quiz?.near ?? 'brickell')
-const gyms = computed(() => state.compare.map((id) => GYMS.find((g) => g.id === id)).filter(Boolean))
+const gyms = computed(() => state.compare.map((id) => allGyms.value.find((g) => g.id === id)).filter(Boolean))
 const rows = computed(() => compareRows(near.value, state.quiz))
 const best = computed(() => rows.value.map((r) => new Set(bestIndexes(r, gyms.value))))
 </script>

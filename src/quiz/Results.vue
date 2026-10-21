@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref, watchEffect } from 'vue'
-import { AREAS, GYMS, TIERS } from '../shared/data.js'
+import { AREAS, TIERS } from '../shared/data.js'
+import { gyms } from '../shared/gyms.js'
 import { labelFor } from '../shared/questions.js'
 import { rankGyms } from '../shared/scoring.js'
 import { milesLabel, scoreClass, gymUrl } from '../shared/format.js'
@@ -17,7 +18,7 @@ const heading = ref(null)
 const copied = ref(false)
 const showAll = ref(false)
 
-const ranked = computed(() => rankGyms(GYMS, props.answers, near.value))
+const ranked = computed(() => rankGyms(gyms.value, props.answers, near.value))
 const top = computed(() => ranked.value[0])
 const visible = computed(() => (showAll.value ? ranked.value : ranked.value.slice(0, SHOW_FIRST)))
 

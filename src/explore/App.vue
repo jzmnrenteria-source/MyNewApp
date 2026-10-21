@@ -1,6 +1,7 @@
 <script setup>
 import { computed, nextTick, onMounted, reactive, ref } from 'vue'
-import { AREAS, GYMS } from '../shared/data.js'
+import { AREAS } from '../shared/data.js'
+import { gyms } from '../shared/gyms.js'
 import { QUESTIONS, labelFor } from '../shared/questions.js'
 import { DISTANCES, FEATURES, PRICES, activeFilterCount, areaCounts, defaultFilters, filterGyms, sortGyms } from '../shared/filters.js'
 import { areaLabel, gymUrl, milesLabel, priceLabel, scoreClass } from '../shared/format.js'
@@ -14,10 +15,10 @@ const view = ref('list') // mobile only: 'list' | 'map'
 const mapRef = ref(null)
 const filtersOpen = ref(true)
 
-const filtered = computed(() => filterGyms(GYMS, f))
+const filtered = computed(() => filterGyms(gyms.value, f))
 const results = computed(() => sortGyms(filtered.value, f.near, state.quiz))
 // Markers count gyms that pass every filter except the neighborhood one itself.
-const markers = computed(() => areaCounts(filterGyms(GYMS, { ...f, area: null })))
+const markers = computed(() => areaCounts(filterGyms(gyms.value, { ...f, area: null })))
 const ranked = computed(() => !!state.quiz?.answers)
 const quizSummary = computed(() =>
   ranked.value ? ['goal', 'budget', 'when', 'priority'].map((k) => labelFor(k, state.quiz.answers[k])).join(' · ') : '',

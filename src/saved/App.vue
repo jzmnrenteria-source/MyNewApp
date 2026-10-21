@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from 'vue'
-import { GYMS } from '../shared/data.js'
+import { gyms } from '../shared/gyms.js'
 import { MAX_COMPARE, setNote, state, toggleSaved } from '../shared/store.js'
 import { areaLabel, gymUrl, priceLabel } from '../shared/format.js'
 import GymActions from '../shared/GymActions.vue'
 
 const items = computed(() =>
-  state.saved.map((s) => ({ ...s, gym: GYMS.find((g) => g.id === s.id) })).filter((s) => s.gym),
+  state.saved.map((s) => ({ ...s, gym: gyms.value.find((g) => g.id === s.id) })).filter((s) => s.gym),
 )
 
 function compareAll() {
