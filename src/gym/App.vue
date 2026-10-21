@@ -9,6 +9,7 @@ import { state } from '../shared/store.js'
 import GymActions from '../shared/GymActions.vue'
 import MapView from '../shared/MapView.vue'
 import ContactForm from './ContactForm.vue'
+import { PHASE4_LIVE } from '../shared/features.js'
 
 const id = new URLSearchParams(window.location.search).get('id')
 const near = state.quiz?.near ?? 'brickell'
@@ -124,7 +125,7 @@ watchEffect(() => {
           <a href="/quiz/">Take the 60-second quiz</a> to see how well {{ gym.name }} fits you.
         </p>
 
-        <ContactForm :gym="gym" />
+        <ContactForm v-if="PHASE4_LIVE" :gym="gym" />
 
         <section aria-labelledby="todo-title" class="pending">
           <h2 id="todo-title" class="section-title">Still to come</h2>
@@ -132,7 +133,7 @@ watchEffect(() => {
             We only publish details we can confirm, so {{ gym.name }}’s {{ missing.join(', ') }}
             {{ missing.length === 1 ? 'isn’t' : 'aren’t' }} listed yet. Check with the gym directly for now.
           </p>
-          <p v-if="!gym.ownerId">Own or manage this gym? <a href="/owner/">Claim this listing</a> to add your details.</p>
+          <p v-if="PHASE4_LIVE && !gym.ownerId">Own or manage this gym? <a href="/owner/">Claim this listing</a> to add your details.</p>
           <a v-if="gym.source" :href="gym.source" target="_blank" rel="noopener">Where this listing comes from</a>
         </section>
       </div>
