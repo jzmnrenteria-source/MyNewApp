@@ -34,7 +34,7 @@ Each phase ends with a quality check. The next phase starts only after the check
 - Results shareable as a link
 - Netlify switches to a build step (`npm run build`, publish `dist`)
 
-✅ Check: rankings make sense for 5 to 6 test answer sets, smooth on a phone. Review the gym list in `src/quiz/data.js`.
+✅ Check: rankings make sense for 5 to 6 test answer sets, smooth on a phone. Review the gym list in `src/shared/data.js`.
 
 ## Phase 3: Explore, gym profiles, compare and saved (Leaflet) (built, waiting for the check)
 
