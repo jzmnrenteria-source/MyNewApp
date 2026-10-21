@@ -28,15 +28,18 @@
   <link rel="preload" href="/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="app-page">
+  <a href="#app" class="skip-to-content">Skip to content</a>
   <header class="nav">
     <div class="wrap nav-inner">
       <a href="/" class="logo" aria-label="FitQuest home">
         <span class="logo-mark" aria-hidden="true"></span>FitQuest
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="/#how">How it works</a>
-        <a href="/#gyms">For gyms</a>
+        <a href="/quiz/" aria-current="page"><span>Find my match</span></a>
+        <a href="/explore/"><span>Explore</span></a>
+        <a href="/saved/"><span>Saved<span data-count="saved"></span></span></a>
+        <a href="/compare/"><span>Compare<span data-count="compare"></span></span></a>
       </nav>
       <div class="theme-toggle" role="radiogroup" aria-label="Color theme">
         <button type="button" role="radio" aria-checked="false" data-theme-choice="light" aria-label="Light theme" title="Light">
@@ -52,7 +55,14 @@
     </div>
   </header>
 
-  <main id="app" class="wrap quiz-main"></main>
+  <main id="app" class="wrap app-main" tabindex="-1"></main>
+
+  <nav class="app-tabs" aria-label="Tabs">
+        <a href="/quiz/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg><span>Match</span></a>
+        <a href="/explore/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l-6 2v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg><span>Explore</span></a>
+        <a href="/saved/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg><span>Saved<span data-count="saved"></span></span></a>
+        <a href="/compare/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg><span>Compare<span data-count="compare"></span></span></a>
+  </nav>
 
   <script type="module" src="/src/quiz/main.js"></script>
   <script src="/theme.js" defer></script>

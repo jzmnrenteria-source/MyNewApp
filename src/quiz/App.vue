@@ -1,7 +1,7 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue'
-import { QUESTIONS } from './questions.js'
-import { parseAnswers, toQuery } from './scoring.js'
+import { QUESTIONS } from '../shared/questions.js'
+import { parseAnswers, toQuery } from '../shared/scoring.js'
 import Results from './Results.vue'
 
 // Start on the results if the URL already carries a full set of answers (a shared link).

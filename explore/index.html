@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Miami gyms — FitQuest</title>
+  <meta name="description" content="Browse Miami gyms on a map. Filter by price, distance, training style and amenities.">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash
+    try { var t = localStorage.getItem('fitquest-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  </script>
+  <link rel="canonical" href="https://fitq2026.netlify.app/explore/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FitQuest">
+  <meta property="og:title" content="FitQuest — Find the gym that fits you">
+  <meta property="og:description" content="Answer four quick questions and get Miami gyms ranked by your goal, budget and schedule.">
+  <meta property="og:url" content="https://fitq2026.netlify.app/explore/">
+  <meta property="og:image" content="https://fitq2026.netlify.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FitQuest: Find the gym that actually fits you.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#f2f2f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151719" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/barlow-condensed-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="app-page">
+  <a href="#app" class="skip-to-content">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="logo" aria-label="FitQuest home">
+        <span class="logo-mark" aria-hidden="true"></span>FitQuest
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/quiz/"><span>Find my match</span></a>
+        <a href="/explore/" aria-current="page"><span>Explore</span></a>
+        <a href="/saved/"><span>Saved<span data-count="saved"></span></span></a>
+        <a href="/compare/"><span>Compare<span data-count="compare"></span></span></a>
+      </nav>
+      <div class="theme-toggle" role="radiogroup" aria-label="Color theme">
+        <button type="button" role="radio" aria-checked="false" data-theme-choice="light" aria-label="Light theme" title="Light">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button type="button" role="radio" aria-checked="true" data-theme-choice="system" aria-label="System theme" title="System">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
+        </button>
+        <button type="button" role="radio" aria-checked="false" data-theme-choice="dark" aria-label="Dark theme" title="Dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="wrap app-main" tabindex="-1"></main>
+
+  <nav class="app-tabs" aria-label="Tabs">
+        <a href="/quiz/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg><span>Match</span></a>
+        <a href="/explore/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l-6 2v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg><span>Explore</span></a>
+        <a href="/saved/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg><span>Saved<span data-count="saved"></span></span></a>
+        <a href="/compare/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg><span>Compare<span data-count="compare"></span></span></a>
+  </nav>
+
+  <script type="module" src="/src/explore/main.js"></script>
+  <script src="/theme.js" defer></script>
+</body>
+</html>

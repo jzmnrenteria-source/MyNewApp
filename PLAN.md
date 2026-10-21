@@ -25,7 +25,7 @@ Each phase ends with a quality check. The next phase starts only after the check
 
 ✅ Check: a waitlist signup arrives in Netlify Forms, Lighthouse 90+, both themes look right on a real phone.
 
-## Phase 2: The working quiz with ranked matches (Vite + Vue) (built, waiting for the check)
+## Phase 2: The working quiz with ranked matches (Vite + Vue) ✔ done
 
 - Four-question quiz: goal, budget, when you train, what matters most
 - Ranked results with match % and the reasons behind it, using 20 real Miami gyms from public listings
@@ -36,13 +36,16 @@ Each phase ends with a quality check. The next phase starts only after the check
 
 ✅ Check: rankings make sense for 5 to 6 test answer sets, smooth on a phone. Review the gym list in `src/quiz/data.js`.
 
-## Phase 3: Explore, gym profiles, compare and saved (Leaflet)
+## Phase 3: Explore, gym profiles, compare and saved (Leaflet) (built, waiting for the check)
 
-- Map with filters for price, distance, classes and amenities; map tiles switch to a dark style in dark mode
+- Map with filters for price, distance, training style and amenities; map tiles darken in dark mode
+- One marker per neighborhood with a gym count (exact pins once addresses are confirmed)
 - "Get directions" opens the gym's address in the visitor's maps app
-- Gym pages: fees, packages, schedule, hours, reviews
+- Gym pages: price level, access, coaching, recovery, best-for, your match, nearby gyms
+  (packages, schedules, hours and reviews show as "still to come" until they can be confirmed; Phase 4 owner listings fill them)
 - Compare up to 4 gyms side by side, best value in each row highlighted
 - Saved shortlist with notes, kept in the browser
+- Quiz results: View / Save / Compare on each gym, top 10 with "Show all"
 
 ✅ Check: quiz → explore → profile → compare → saved works end to end; filters and the shortlist behave.
 

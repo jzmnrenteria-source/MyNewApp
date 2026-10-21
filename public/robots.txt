@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /thanks.html
+Disallow: /saved/
+Disallow: /compare/
 
 Sitemap: https://fitq2026.netlify.app/sitemap.xml

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { GYMS, AREAS } from '../src/quiz/data.js'
-import { QUESTIONS } from '../src/quiz/questions.js'
-import { WEIGHTS, milesBetween, parseAnswers, rankGyms, scoreGym, toQuery } from '../src/quiz/scoring.js'
+import { GYMS, AREAS } from '../src/shared/data.js'
+import { QUESTIONS } from '../src/shared/questions.js'
+import { WEIGHTS, milesBetween, parseAnswers, rankGyms, scoreGym, toQuery } from '../src/shared/scoring.js'
 
 const base = { goal: 'strength', budget: '2', when: 'evening', priority: 'price' }
 
