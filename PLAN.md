@@ -5,7 +5,8 @@ Each phase ends with a quality check. The next phase starts only after the check
 ## Decisions
 
 - **Framework (from Phase 2):** Vite + Vue. The FitQuest design artifact's screens are already written in Vue.
-- **Maps (Phase 3):** Google Maps (Maps JavaScript API). Needs an API key restricted to the site's domains.
+- **Maps (Phase 3):** Leaflet with OpenStreetMap-based map tiles. No API key or billing. Map credits must stay visible on the map.
+  If traffic grows, move the tiles to a hosted provider (most have a free tier) by changing one URL.
 
 ## Phase 0: Light, dark and system themes (built, waiting for the check)
 
@@ -32,9 +33,10 @@ Each phase ends with a quality check. The next phase starts only after the check
 
 ✅ Check: rankings make sense for 5 to 6 test answer sets, smooth on a phone.
 
-## Phase 3: Explore, gym profiles, compare and saved (Google Maps)
+## Phase 3: Explore, gym profiles, compare and saved (Leaflet)
 
-- Map with filters for price, distance, classes and amenities
+- Map with filters for price, distance, classes and amenities; map tiles switch to a dark style in dark mode
+- "Get directions" opens the gym's address in the visitor's maps app
 - Gym pages: fees, packages, schedule, hours, reviews
 - Compare up to 4 gyms side by side, best value in each row highlighted
 - Saved shortlist with notes, kept in the browser
