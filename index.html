@@ -10,10 +10,22 @@
     // Apply the saved theme before first paint to avoid a flash
     try { var t = localStorage.getItem('fitquest-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
   </script>
+  <link rel="canonical" href="https://fitq2026.netlify.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FitQuest">
+  <meta property="og:title" content="FitQuest — Find the gym that fits you">
+  <meta property="og:description" content="Answer four quick questions and get Miami gyms ranked by your goal, budget and schedule.">
+  <meta property="og:url" content="https://fitq2026.netlify.app/">
+  <meta property="og:image" content="https://fitq2026.netlify.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FitQuest: Find the gym that actually fits you.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#f2f2f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151719" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/barlow-condensed-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,18 +67,18 @@
             <a href="#how" class="btn btn-secondary btn-lg">See how it works</a>
           </div>
           <ul class="hero-stats">
-            <li><strong>120+</strong><span>gyms mapped</span></li>
             <li><strong>4</strong><span>questions to a match</span></li>
+            <li><strong>60s</strong><span>to your ranked list</span></li>
             <li><strong>$0</strong><span>to use, always</span></li>
           </ul>
         </div>
 
         <!-- Product preview card -->
-        <div class="preview blueprint" aria-label="Example of FitQuest match results">
+        <div class="preview blueprint" aria-label="Example of FitQuest match results (sample gyms)">
           <span class="corner tl"></span><span class="corner tr"></span>
           <span class="corner bl"></span><span class="corner br"></span>
           <div class="preview-head">
-            <span class="kicker">Your top matches</span>
+            <span class="kicker">Your top matches <span class="tag-example">Example</span></span>
             <span class="muted small">Strength · Under $80/mo · Mornings</span>
           </div>
           <ol class="match-list">

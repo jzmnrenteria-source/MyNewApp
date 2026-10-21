@@ -10,7 +10,11 @@ Plain HTML and CSS, so there's no build step.
 - `thanks.html`: the page people see after joining the waitlist
 - `styles.css`: design tokens (Barlow / Barlow Condensed, steel-blue accent), light and dark themes, and the page styles
 - `theme.js`: the Light / System / Dark switch in the top bar (the choice is remembered in the browser)
-- `netlify.toml`: Netlify settings (serves the repo root, adds security headers)
+- `404.html`: shown by Netlify for any address that doesn't exist
+- `fonts/`: Barlow and Barlow Condensed, hosted with the site (no Google Fonts request)
+- `og-image.png`: the preview image shown when the link is shared
+- `robots.txt`, `sitemap.xml`: for search engines. They contain the site address, so update them if you move to a custom domain
+- `netlify.toml`: Netlify settings (serves the repo root, adds security headers and cache headers)
 
 ## Deploy to Netlify
 
@@ -27,3 +31,7 @@ python3 -m http.server 8000
 ```
 
 Then open http://localhost:8000.
+
+## Changing the site address
+
+The full address `https://fitq2026.netlify.app` appears in `index.html` (canonical link and share tags), `robots.txt` and `sitemap.xml`. Search for it and replace it when you add a custom domain.

@@ -8,19 +8,20 @@ Each phase ends with a quality check. The next phase starts only after the check
 - **Maps (Phase 3):** Leaflet with OpenStreetMap-based map tiles. No API key or billing. Map credits must stay visible on the map.
   If traffic grows, move the tiles to a hosted provider (most have a free tier) by changing one URL.
 
-## Phase 0: Light, dark and system themes (built, waiting for the check)
+## Phase 0: Light, dark and system themes ✔ done
 
 - Light / System / Dark switch in the top bar on every page
 - System follows the device setting; a chosen theme is remembered and applied with no flash
 
 ✅ Check: try all three on desktop and phone, reload after each, switch the device to dark mode while on System.
 
-## Phase 1: Make the landing page launch-ready
+## Phase 1: Make the landing page launch-ready (built, waiting for the check)
 
-- Real gyms and figures in place of the placeholders
-- Social share image and description, sitemap, 404 page
-- Privacy-friendly visitor stats, custom domain
-- Easier-to-read blue buttons (contrast)
+- Done: honest figures, and the sample gyms are labelled "Example" (real gyms arrive with the Phase 2 data)
+- Done: social share image and tags, sitemap, robots.txt, 404 page
+- Done: all colours pass WCAG AA contrast in both themes
+- Done: fonts hosted with the site (faster first paint, no Google request)
+- For you in Netlify: turn on visitor stats (Netlify Analytics needs no code), connect a custom domain
 
 ✅ Check: a waitlist signup arrives in Netlify Forms, Lighthouse 90+, both themes look right on a real phone.
 
