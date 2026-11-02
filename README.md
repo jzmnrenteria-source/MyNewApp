@@ -57,7 +57,7 @@ Saved gyms and notes live in the visitor's browser, and sync to their account wh
 
 ## Accounts, owners and admins
 
-- **Sign-in:** visitors choose Continue with Google, or enter their email and click the link they receive. No passwords. Once signed in, their name and profile picture (from Supabase `user_metadata`) show on the account page and next to the Account link.
+- **Sign-in:** visitors choose Continue with Google, or enter their email and click the link they receive. No passwords. Once signed in, their name and profile picture (from Supabase `user_metadata`) show on the account page, and their first name and photo replace "Sign in" in the top bar. Only `https://` photo links are used.
 - **Gym owners** request to claim a listing (or add a new gym) on `/owner/`. Once an admin approves, they can edit their gym's description, hours, pricing, website, phone and day-pass offer, and read messages sent from their gym page. Name, address, price level and training styles stay admin-only.
 - **Messages:** signed-in visitors can request a day pass or ask a question on any gym page (10 a day per account). Owners see them on `/owner/`; admins see recent ones on `/admin/`.
 - **Admins** approve or reject requests and edit or add any gym on `/admin/`. Admin rights are granted in the database (`private.admin_emails`), never from the app.

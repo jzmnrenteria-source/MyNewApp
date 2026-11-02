@@ -66,3 +66,17 @@ Still open:
 - Supabase dashboard: set the Site URL and redirect URLs; connect your own email sender before launch
 
 ✅ Check: security review (one user can't see another's data), full test from sign-up to a gym receiving a lead, Netlify error logs clean.
+
+## Phase 5: Florida-wide ZIP code search (planned, not started)
+
+Decisions (from the site owner):
+- **Focus:** FitQuest stops presenting itself as Miami-only. Headline, wording and share image change; the web address stays the same for now.
+- **Coverage:** Florida ZIP codes only to start. ZIP locations come from a free public ZIP code list hosted with the site (no API key, no cost).
+- **Gyms outside Miami:** added by gym owners (claim/add requests) and admins on `/admin/`. Areas with no gyms yet show a friendly "no gyms here yet, know one? tell us" message.
+
+What it involves:
+- A ZIP code box (on the landing page, quiz and Explore) that finds the area and lists gyms by real distance
+- Replacing the 7 fixed Miami neighborhoods with a latitude/longitude, city and ZIP per gym (database change plus a one-time update of the 20 Miami gyms)
+- Admin and owner forms gain address/ZIP fields; the map pins each gym instead of each neighborhood
+
+✅ Check: a Florida ZIP inside Miami lists the right gyms by distance; a Florida ZIP with no gyms shows the friendly empty state; a non-Florida ZIP explains coverage.

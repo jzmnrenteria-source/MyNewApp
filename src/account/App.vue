@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { supabase } from '../shared/supabase.js'
-import { auth, avatarUrl, displayName, sendSignInLink, signInWithGoogle, signOut, takeNext } from '../shared/auth.js'
+import { auth, avatarUrl, displayName, firstName as firstNameOf, sendSignInLink, signInWithGoogle, signOut, takeNext } from '../shared/auth.js'
 import { gyms } from '../shared/gyms.js'
 import { state } from '../shared/store.js'
 import { gymUrl } from '../shared/format.js'
@@ -24,10 +24,7 @@ if (authError) {
 }
 
 const name = computed(() => displayName(auth.user))
-const firstName = computed(() => {
-  const meta = auth.user?.user_metadata ?? {}
-  return (meta.full_name || meta.name) ? name.value.split(' ')[0] : ''
-})
+const firstName = computed(() => firstNameOf(auth.user))
 const photo = computed(() => avatarUrl(auth.user))
 const photoFailed = ref(false)
 watch(photo, () => { photoFailed.value = false })

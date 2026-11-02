@@ -1,6 +1,9 @@
 // Sign-in with an emailed link or Google, and the signed-in visitor's profile.
 import { reactive } from 'vue'
 import { supabase } from './supabase.js'
+import { avatarUrl, firstName } from './profile.js'
+
+export { avatarUrl, displayName, firstName } from './profile.js'
 
 export const auth = reactive({ ready: !supabase, user: null, profile: null })
 const NEXT_KEY = 'fitquest-next'
@@ -14,21 +17,10 @@ async function loadProfile() {
   auth.profile = data ?? { id: auth.user.id, email: auth.user.email, is_admin: false }
 }
 
-// Name and photo from user_metadata (Google sets full_name/name and avatar_url/picture).
-export function displayName(user) {
-  const meta = user?.user_metadata ?? {}
-  return meta.full_name || meta.name || user?.email || ''
-}
-
-export function avatarUrl(user) {
-  const meta = user?.user_metadata ?? {}
-  return meta.avatar_url || meta.picture || ''
-}
-
 function updateNav() {
   const pic = avatarUrl(auth.user)
   document.querySelectorAll('[data-auth-link]').forEach((el) => {
-    el.textContent = auth.user ? 'Account' : 'Sign in'
+    el.textContent = auth.user ? firstName(auth.user) || 'Account' : 'Sign in'
     // Desktop nav link (the mobile tab bar has its own icon): show the profile photo beside it.
     const link = el.parentElement
     if (!link || link.querySelector('svg')) return
