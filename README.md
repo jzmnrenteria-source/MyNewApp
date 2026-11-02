@@ -15,7 +15,7 @@ Built with [Vite](https://vite.dev), [Vue](https://vuejs.org), [Leaflet](https:/
   - `gym/?id=…`: one gym's profile
   - `compare/`: up to 4 gyms side by side (shareable as `/compare/?ids=a,b`)
   - `saved/`: the shortlist with notes
-  - `account/`: email-link sign-in, sent messages and owner request status
+  - `account/`: Google or email-link sign-in, sent messages and owner request status
   - `owner/`: gym owners claim a listing, edit their details and read messages
   - `admin/`: approve owner requests, edit or add gyms (admins only)
 - `src/shared/`: code used by several pages
@@ -57,7 +57,7 @@ Saved gyms and notes live in the visitor's browser, and sync to their account wh
 
 ## Accounts, owners and admins
 
-- **Sign-in:** visitors enter their email and click the link they receive. No passwords.
+- **Sign-in:** visitors choose Continue with Google, or enter their email and click the link they receive. No passwords. Once signed in, their name and profile picture (from Supabase `user_metadata`) show on the account page and next to the Account link.
 - **Gym owners** request to claim a listing (or add a new gym) on `/owner/`. Once an admin approves, they can edit their gym's description, hours, pricing, website, phone and day-pass offer, and read messages sent from their gym page. Name, address, price level and training styles stay admin-only.
 - **Messages:** signed-in visitors can request a day pass or ask a question on any gym page (10 a day per account). Owners see them on `/owner/`; admins see recent ones on `/admin/`.
 - **Admins** approve or reject requests and edit or add any gym on `/admin/`. Admin rights are granted in the database (`private.admin_emails`), never from the app.
@@ -66,6 +66,7 @@ Saved gyms and notes live in the visitor's browser, and sync to their account wh
 ### Supabase settings to check
 
 - **Authentication → URL Configuration:** set the Site URL to the live site address and add `https://<your-site>/account/` (and `http://localhost:5173/account/` for local development) to the Redirect URLs. Sign-in links won't return to the site otherwise.
+- **Authentication → Providers → Google:** turn it on and paste the Google OAuth client ID and secret. In Google Cloud, the OAuth client's authorized redirect URI is `https://kukglvtcsiovqvrahgmi.supabase.co/auth/v1/callback`.
 - **Email:** Supabase's built-in email sender only allows a few emails an hour. Connect your own SMTP provider (Authentication → Emails) before launch.
 - **Free plan:** projects pause after a week without activity. The site keeps working on the built-in gym list while paused, but sign-in and owner tools stop until it's restored.
 

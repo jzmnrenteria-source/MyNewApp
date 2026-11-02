@@ -236,6 +236,8 @@ a { color: var(--color-link); text-underline-offset: 3px; }
 .nav-links { display: flex; gap: 24px; margin-left: auto; }
 .nav-links a { color: var(--color-text); text-decoration: none; font-weight: 500; font-size: 15px; }
 .nav-links a:hover { color: var(--color-link); }
+.nav-links a:has(.nav-avatar) { display: inline-flex; align-items: center; gap: 8px; }
+.nav-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
 
 /* Hero */
 .hero { padding: 72px 0 88px; }

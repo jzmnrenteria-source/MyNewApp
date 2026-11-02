@@ -1,4 +1,4 @@
-// Sign-in with an emailed link, and the signed-in visitor's profile.
+// Sign-in with an emailed link or Google, and the signed-in visitor's profile.
 import { reactive } from 'vue'
 import { supabase } from './supabase.js'
 
@@ -14,9 +14,35 @@ async function loadProfile() {
   auth.profile = data ?? { id: auth.user.id, email: auth.user.email, is_admin: false }
 }
 
+// Name and photo from user_metadata (Google sets full_name/name and avatar_url/picture).
+export function displayName(user) {
+  const meta = user?.user_metadata ?? {}
+  return meta.full_name || meta.name || user?.email || ''
+}
+
+export function avatarUrl(user) {
+  const meta = user?.user_metadata ?? {}
+  return meta.avatar_url || meta.picture || ''
+}
+
 function updateNav() {
+  const pic = avatarUrl(auth.user)
   document.querySelectorAll('[data-auth-link]').forEach((el) => {
     el.textContent = auth.user ? 'Account' : 'Sign in'
+    // Desktop nav link (the mobile tab bar has its own icon): show the profile photo beside it.
+    const link = el.parentElement
+    if (!link || link.querySelector('svg')) return
+    let img = link.querySelector('.nav-avatar')
+    if (!pic) return img?.remove()
+    if (!img) {
+      img = document.createElement('img')
+      img.className = 'nav-avatar'
+      img.alt = ''
+      img.referrerPolicy = 'no-referrer'
+      img.addEventListener('error', () => img.remove())
+      link.prepend(img)
+    }
+    if (img.src !== pic) img.src = pic
   })
 }
 
@@ -51,14 +77,29 @@ export function whenReady() {
 // Send the sign-in link. `next` is where to return afterwards (same site only).
 export async function sendSignInLink(email, next) {
   if (!supabase) throw new Error('Sign-in isn’t available right now.')
-  try {
-    if (next && next.startsWith('/') && !next.startsWith('//')) localStorage.setItem(NEXT_KEY, next)
-  } catch { /* storage blocked: return to the account page instead */ }
+  rememberNext(next)
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: { emailRedirectTo: `${window.location.origin}/account/` },
   })
   if (error) throw error
+}
+
+// Send the visitor to Google; Supabase brings them back to the account page signed in.
+export async function signInWithGoogle(next) {
+  if (!supabase) throw new Error('Sign-in isn’t available right now.')
+  rememberNext(next)
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: `${window.location.origin}/account/` },
+  })
+  if (error) throw error
+}
+
+function rememberNext(next) {
+  try {
+    if (next && next.startsWith('/') && !next.startsWith('//')) localStorage.setItem(NEXT_KEY, next)
+  } catch { /* storage blocked: return to the account page instead */ }
 }
 
 // Where to go after the link brings the visitor back.
